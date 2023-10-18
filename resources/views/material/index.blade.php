@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row g-4">
-
+        @csrf
         @foreach ($materials as $material)
             <div class="col-3">
                 <div class="card">
@@ -13,16 +13,19 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $material->name }}</h5>
 
-                        <a class="text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-                            Read More
+                        <button class="btn btn-primary mb-0 mt-auto" onclick="requestMaterial({{ $material->id }}, 5)">
                             <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>
         @endforeach
 
     </div>
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('js/requestMaterial.js') }}"></script>
 @endsection
 
 @push('material.index')

@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\MaterialController;
+use App\Http\Controllers\MaterialRequestController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Route;
@@ -66,6 +67,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/login', function () {
 		return view('dashboard');
 	})->name('sign-up');
+	Route::post('/request', [MaterialRequestController::class, 'store']);
 });
 
 
